@@ -2,17 +2,15 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Homepage</title>
+    <title>Recipe</title>
   </head>
   <body>
-    <h1>All Recipes</h1>
-    <% @recipes.each do |element| %>
-      <div name="recipes">
-        <h2><%= element.name %></h2><br>
-        <p>Ingredients you'll need: <%= element.ingredients %></p><br>
-        <p>Time Duration: <%= element.cook_time %></p><br>
-        <a href="/recipes/<%= element.id %>">Link to Recipe</a>
-      </div>
-    <% end %>
+    <h1><%= @recipe.name %></h1>
+    <h3><%= @recipe.ingredients %></h3>
+    <h4>Cook Duration: <%= @recipe.cook_time %></h4>
+    <form method="POST" action="/recipe/<%= @recipe.id %>/delete">
+      <input type="hidden" id="hidden" new="_method" value="delete">
+      <input type="submit" value="delete">
+    </form>
   </body>
 </html>
